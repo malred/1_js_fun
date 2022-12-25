@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 通过script加上type="module"就可以使用es模块化 -->
+    <script type="module">
+        console.log("es module");
+    </script>
+    <!-- 1,ESM自动采用严格模式,忽略'use strict' -->
+    <script type="module">
+        console.log(this); // undefined
+    </script>
+    <!-- 2,ESM都是运行在单独的私有作用域中 -->
+    <script type="module">
+        var foo=100
+        console.log(foo);// 100
+    </script>
+    <!-- script[type="module"] -->
+    <script type="module">
+        console.log(foo);// foo is not defined
+    </script>
+    <!-- 3,ESM是通过CORS的方式请求外部JS模块的 -->
+    <script type="module" src="https://unpkg.com/jquery@3.4.1/dist/jquery.min.js"></script>
+    <!-- 4,ESM的script标签会延迟执行脚本,不会阻碍页面渲染 -->
+    <script type="module" src="./demo.js"></script>
+    <p>要显示的内容</p>
+</body>
+</html>
